@@ -1,0 +1,45 @@
+.navbar {
+    background-color: salmon;
+}
+
+.image {
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+    float: left;
+}
+
+.subhead {
+    margin:20px;
+}
+
+.subhead .home {
+    margin-right:20px;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 40px;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.button {
+    margin: 20px;
+}
+
+.articles {
+    background-color: white;
+}
+
+#art {
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    border: solid black;
+    margin: 20px;
+    padding: 20px;
+}
