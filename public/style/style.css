@@ -9,6 +9,28 @@
     float: left;
 }
 
+.home {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.home:hover {
+    background-color: tomato;
+    text-decoration: none;
+}
+
+.saved {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.saved:hover {
+    background-color: tomato;
+    text-decoration: none;
+}
+
 .subhead {
     margin:20px;
 }
@@ -32,14 +54,43 @@ h3 {
     margin: 20px;
 }
 
+.first {
+    height: 200px;
+    width: 80%;
+    font-family: 'Roboto', sans-serif;
+    background-color: salmon;
+}
+
+.no-scrape{
+    text-align: center;
+    padding-top: 40px;
+}
+
 .articles {
     background-color: white;
 }
 
 #art {
     font-family: 'Roboto', sans-serif;
-    background-color: white;
-    border: solid black;
     margin: 20px;
     padding: 20px;
+}
+
+#title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    font-size:24px;
+    border-bottom: solid salmon;
+    display: flex;
+    justify-content: space-between;
+}
+
+#link {
+    font-family: 'Roboto', sans-serif;
+    font-weight:bold;   
+}
+
+.save {
+    font-size: 14px;
+    margin-bottom: 5px;
 }

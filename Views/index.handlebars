@@ -6,8 +6,8 @@
   <h3> Your Bleacher Report sports news generator! </h3>
 
   <div class="subhead"> 
-    <a class="home" href="X"> Home </a>
-    <a class="saved" href="X"> Saved Articles </a>
+    <a class="home" href="/"> Home </a>
+    <a class="saved" href="/saved"> Saved Articles </a>
 </div>
 
 </div>
@@ -18,13 +18,21 @@
         <button type="button" class="btn btn-primary">Scrape Bleacher Report Articles</button>
     </div>
 
+    <div class="first"> 
+        <h2 class="no-scrape"> There are no scraped articles yet. </h2> 
+
+    </div>
+
     <div class="articles"> 
     {{#each article}}
-    <button onclick="runScrape({"article":"res"})"></button>
-      
         <div id="art">
-            {{this.title}} <br>
-            {{this.link}}
+            <div id="title"> 
+                {{this.title}} <br>
+                <button type="button" class="btn btn-success save">Save Article</button>
+            </div>
+            <div id="link">
+               <a href="{{this.link}}" target="_blank"> {{this.link}} </a>
+            </div>
         </div>
     {{/each}}
     <div> 

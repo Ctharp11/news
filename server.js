@@ -1,11 +1,3 @@
-//connects to local server 
-//scrapes bleacher report 
-
-//scrape stories from bleacher report 
-//should include link to story, headline, and thumbnail/image 
-//cheerio to grab site content and mongoose to save it to mongodbdatabase
-
-
 //dependencies
 var express = require("express");
 var exphbs = require("express-handlebars");
@@ -44,12 +36,15 @@ db.once("open", function(){
 })
 
 app.get("/", function (req, res) {
-  Article.find({}, function runScrape (err, data) {
+  Article.find([
+    {title: ""},
+    {link: ""}
+    ], function (err, data) {
     var hbsObject = {
         article: data
       }
       res.render("index", hbsObject);
-    })
+    }).limit(20);
   })
 
 app.get("/scrape", function(req, res) {
@@ -99,17 +94,50 @@ app.get("/articles", function (err, res){
   })
 });
 
-// app.get("/articles/:id", function (req, res){
-//   Article.findOne({_id: req.params.id}) 
-//     .populate("note")
-//     .exec(function(error, doc) {
-//       if (err) {
-//         console.log(err)
-//       } else {
-//         res.json(doc);
+app.get("/articles/:id", function (req, res){
+  Article.findOne({_id: req.params.id}) 
+    .populate("note")
+    .exec(function(err, doc) {
+      if (err) {
+        console.log(err)
+      } else {
+        res.json(doc);
+      }
+    })
+  });
+
+app.post("/articles/:id", function (req, res){
+  var newNote = new Note(req.body);
+
+  newNote.save(function(err, doc){
+    if (err) {
+      console.log(err)
+    } else {
+      Articles.findOneandUpdate({_id:req.params.id}, {note:doc._id})
+      .exec(function(err, doc){
+        if (err) {
+          console.log(err)
+        } else {
+          res.send(doc);
+        }
+      })
+    }
+  })
+})
+
+// app.get("/saved", function (err, res){
+//   Article.find([
+//     {title: ""},
+//     {link: ""}
+//     ], function (err, data) {
+//     var hbsObject = {
+//         article: data
 //       }
-//     })
-//   });
+//       res.render("index", hbsObject);
+//     });
+// })
+
+//app.post("/saved", function ())
 
 app.listen(3360, function(){
     console.log("listening");
