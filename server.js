@@ -23,8 +23,16 @@ app.use(express.static(process.cwd() + "/public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+var databaseUri = 'mongodb://localhost/news';
+
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(databaseUri);
+}
+
 //database configuration with mongoose
-mongoose.connect("mongodb://localhost/news")
+//mongoose.connect("mongodb://localhost/news")
 var db = mongoose.connection;
 
 db.on("error", function(error) {
