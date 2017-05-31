@@ -22,7 +22,7 @@
     "request": "^2.81.0"
   }, 
   "engines": {
-    "node": "3.10.8"
+    "node": "6.9.1"
   },
   "bugs": {
     "url": "https://github.com/Ctharp11/news/issues"
