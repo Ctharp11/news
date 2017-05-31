@@ -23,6 +23,7 @@ app.use(express.static(process.cwd() + "/public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+
 var databaseUri = 'mongodb://localhost/news';
 
 if (process.env.MONGODB_URI) {
