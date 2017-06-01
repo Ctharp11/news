@@ -7,9 +7,14 @@ $('.button').on("click", function () {
     $(".articles").show();
 })
 
-$('.save').on("click", function () {
-    var saved = [];
-    if (true) {
 
-    }
-})
+$('.save').on('click', function (){
+    //on click
+    var articleId;
+    //$(articleId).attr(_id);
+    console.log(articleId);
+
+        //get id
+        //ajax to '/articles/idGoesHere'
+});
+

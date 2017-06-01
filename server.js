@@ -103,7 +103,19 @@ app.get("/articles", function (err, res){
   })
 });
 
-app.get("/articles/:id", function (req, res){
+app.get("/saved", function (req, res){
+  Article.find([
+    {title: ""},
+    {link: ""}
+    ], function (err, data) {
+    var hbsObject = {
+        article: data
+      }
+      res.render("saved", hbsObject);
+    }).limit(20);
+})
+
+app.get("/saved/:id", function (req, res){
   Article.findOne({_id: req.params.id}) 
     .populate("note")
     .exec(function(err, doc) {
@@ -115,7 +127,7 @@ app.get("/articles/:id", function (req, res){
     })
   });
 
-app.post("/articles/:id", function (req, res){
+app.post("/saved/:id", function (req, res){
   var newNote = new Note(req.body);
 
   newNote.save(function(err, doc){
@@ -134,19 +146,19 @@ app.post("/articles/:id", function (req, res){
   })
 })
 
-// app.get("/saved", function (err, res){
-//   Article.find([
-//     {title: ""},
-//     {link: ""}
-//     ], function (err, data) {
-//     var hbsObject = {
-//         article: data
-//       }
-//       res.render("index", hbsObject);
-//     });
-// })
+app.get("/saved/:id", function (req, res){
 
-//app.post("/saved", function ())
+  res.send("Hi!");
+
+  //get id from params
+    //req.params.id??
+  //find saved article by id
+    //db query
+    //if match, send saved article
+    //else handle error if no match found
+
+});
+
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

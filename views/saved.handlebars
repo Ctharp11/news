@@ -1,0 +1,37 @@
+<div class="navbar">
+  <img class="image" src="/images/sportsbro.jpg" alt="sport bro">
+
+  <h1> Sports Bro Mongo Scraper</h1>
+ 
+  <h3> Your Bleacher Report sports news generator! </h3>
+
+  <div class="subhead"> 
+    <a class="home" href="/"> Home </a>
+    <a class="saved" href="/saved"> Saved Articles </a>
+</div>
+
+</div>
+
+<div class="container"> 
+
+   
+    <div class="first"> 
+        <h2 class="no-scrape"> You don't have any saved articles yet. </h2> 
+
+    </div>
+
+    <div class="articles"> 
+    {{#each article}}
+        <div id="art">
+            <div id="title"> 
+                {{this.title}} <br>
+                <button type="button" class="btn btn-success save">Save Article</button>
+            </div>
+            <div id="link">
+               <a href="{{this.link}}" target="_blank"> {{this.link}} </a>
+            </div>
+        </div>
+    {{/each}}
+    <div> 
+</div>
+
