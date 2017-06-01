@@ -111,7 +111,7 @@ app.get("/saved", function (req, res){
     var hbsObject = {
         article: data
       }
-      res.render("saved", hbsObject);
+      res.render("index", hbsObject);
     }).limit(20);
 })
 
@@ -145,20 +145,6 @@ app.post("/saved/:id", function (req, res){
     }
   })
 })
-
-app.get("/saved/:id", function (req, res){
-
-  res.send("Hi!");
-
-  //get id from params
-    //req.params.id??
-  //find saved article by id
-    //db query
-    //if match, send saved article
-    //else handle error if no match found
-
-});
-
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

@@ -28,7 +28,7 @@
         <div id="art">
             <div id="title"> 
                 {{this.title}} <br>
-                <button type="button" class="btn btn-success save">Save Article</button>
+                <button type="button" class="btn btn-success save" data-article-id="{{this.id}}">Save Article</button>
             </div>
             <div id="link">
                <a href="{{this.link}}" target="_blank"> {{this.link}} </a>
@@ -36,5 +36,11 @@
         </div>
     {{/each}}
     <div> 
+
+    <div class="saved">
+        {{this.title}}
+        <a href="{{this.link}}" target="_blank"> {{this.link}} </a>
 </div>
+
+
 
