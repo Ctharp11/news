@@ -1,24 +1,35 @@
-//javascript to control UI
+$(document).ready(function() {
 
-$(".articles").hide()
-;
-$('.button').on("click", function () {
-    $(".first").hide();
-    $(".articles").show();
-})
+$(document).on('click', '.save', function(e) {
+    e.preventDefault();
+    var savedData = {
+        title: $(this).attr('value-title'),
+        link: $(this).attr('value-link')
+    }
 
-$('.save').on('click', function (){
-    //side ID from button 
-    var articleId = $(this).attr("data-article-id");
-    console.log(articleId);
     $.ajax({
-    method: "GET",
-    url: "/saved/" + articleId
-  }).done(function(response){
-      console.log(response);
-  })
+        url: '/save',
+        type: 'POST',
+        data: {
+            title: $(this).attr('value-title'),
+            link: $(this).attr('value-link')
+        }
+      })
+   })
 
-        //get id
-        //ajax to '/articles/idGoesHere'
+   $('.delete').on('click', function(e) {
+       var id = $(this).attr('value-id');
+       $.ajax({
+           url: '/delete',
+           type: 'DELETE',
+           data: {
+               id: id
+           }
+       })
+   })
+
+
 });
+
+
 

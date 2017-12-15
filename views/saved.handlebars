@@ -9,13 +9,12 @@
     <a class="home" href="/"> Home </a>
     <a class="saved" href="/saved"> Saved Articles </a>
   </div>
-
 </div>
 
 <div class="container"> 
 
     <div class="articles"> 
-    {{#each results}}
+    {{#each article}}
         {{!-- <div class="saved-bubble">
             <p class="saved-text" value="{{this.id}}"> Saved </p>
         </div> --}}
@@ -24,7 +23,7 @@
                 {{this.title}}
                 <br>
                 <form>
-                  <button value-title="{{this.title}}" value-link="{{this.link}}" class="btn btn-success save" >Save Article</button>
+                  <button value-id="{{this._id}}" class="btn btn-success delete" >Delete</button>
                 </form>
             </div>
             <div id="link">
@@ -34,6 +33,3 @@
     {{/each}}
     <div> 
 </div>
-
-
-
