@@ -1,7 +1,14 @@
-$(document).ready(function() {
 
 $(document).on('click', '.save', function(e) {
     e.preventDefault();
+
+    $('.saved-bubble').show()
+
+   setTimeout(function(){
+    $('.saved-bubble').hide()
+   }, 2000)
+
+
     var savedData = {
         title: $(this).attr('value-title'),
         link: $(this).attr('value-link')
@@ -29,7 +36,7 @@ $('.delete').on('click', function(e) {
     })
 })
 
-});
+
 
 
 
