@@ -12,22 +12,22 @@ $(document).on('click', '.save', function(e) {
         type: 'POST',
         data: {
             title: $(this).attr('value-title'),
-            link: $(this).attr('value-link')
+            link: $(this).attr('value-link'),
+            date: Date.now()
         }
       })
    })
 
-   $('.delete').on('click', function(e) {
-       var id = $(this).attr('value-id');
-       $.ajax({
-           url: '/delete',
-           type: 'DELETE',
-           data: {
-               id: id
-           }
-       })
-   })
-
+$('.delete').on('click', function(e) {
+    var id = $(this).attr('value-id');
+    $.ajax({
+        url: '/delete',
+        type: 'DELETE',
+        data: {
+            id: id
+        }
+    })
+})
 
 });
 

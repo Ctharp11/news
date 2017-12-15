@@ -9,6 +9,10 @@ var ArticleSchema = new Schema({
   },
   link: {
     type: String,
+    unique: true
+  }, 
+  date: {
+    type: Number, 
     required: true
   }
 });

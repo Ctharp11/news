@@ -66,9 +66,11 @@ app.get("/", function(req, res) {
 app.post('/save', function(req, res) {
   var posts = req.body;
   var title = posts.title;
-  var link = posts.link
+  var link = posts.link;
+  var date = posts.date;
   console.log(posts.title);
   console.log(posts.link);
+  console.log(posts.date);
   return Article.create(
     posts, {
       upsert: true,
@@ -83,16 +85,14 @@ app.post('/save', function(req, res) {
 })
 
 app.get("/saved", function (req, res){
-  Article.find([
-    {title: ""},
-    {link: ""}, 
-    {_id: ""}
-    ], function (err, data) {
-    var hbsObject = {
+  Article.find({})
+  .sort('-date')
+  .exec(function(err, data){
+       var hbsObject = {
         article: data
       }
       res.render("saved", hbsObject);
-    }).limit(20);
+  })
 })
 
 app.delete('/delete', function(req, res) {
@@ -104,40 +104,8 @@ app.delete('/delete', function(req, res) {
     var response = {
       message: "Successfully deleted",
     } 
-    res.redirect('/saved')
   })
 })
-
-// app.get("/saved/:id", function (req, res){
-//   Article.findOne({_id: req.params.id}) 
-//     .populate("note")
-//     .exec(function(err, doc) {
-//       if (err) {
-//         console.log(err)
-//       } else {
-//         res.json(doc);
-//       }
-//     })
-//   });
-
-// app.post("/saved/:id", function (req, res){
-//   var newNote = new Note(req.body);
-
-//   newNote.save(function(err, doc){
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       Articles.findOneandUpdate({_id:req.params.id}, {note:doc._id})
-//       .exec(function(err, doc){
-//         if (err) {
-//           console.log(err)
-//         } else {
-//           res.send(doc);
-//         }
-//       })
-//     }
-//   })
-// })
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
