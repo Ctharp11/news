@@ -25,7 +25,9 @@ mongoose.Promise = Promise;
 var databaseUri = 'mongodb://localhost/news';
 
 if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
+  mongoose.connect(process.env.MONGODB_URI, {
+    useMongoClient: true
+  })
 } else {
   mongoose.connect(databaseUri, {
     useMongoClient: true
